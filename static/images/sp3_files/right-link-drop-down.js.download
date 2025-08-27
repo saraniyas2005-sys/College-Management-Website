@@ -1,0 +1,6 @@
+(function($){$(document).ready(function(){$('#dropcssmenu > ul > li > a').click(function(){$('#dropcssmenu  > ul > li > a').removeClass('active');$(this).closest('li a').addClass('active');var checkElement=$(this).next();if((checkElement.is('ul'))&&(checkElement.is(':visible'))){$(this).closest('li a').removeClass('active');checkElement.slideUp('normal');}
+if((checkElement.is('ul'))&&(!checkElement.is(':visible'))){$('#dropcssmenu ul ul:visible').slideUp('normal');checkElement.slideDown('normal');}
+if($(this).closest('li').find('ul').children().length==0){return true;}else{return false;}
+$(this).addClass("ulllllllllll");alert('hiiiiiiiiiiiiii');});$('.right-sub-link > a').click(function(){$('.right-sub-link  > a').removeClass('active1');$(this).closest('li a').addClass('active1');var checkElement=$(this).next();if((checkElement.is('ul'))&&(checkElement.is(':visible'))){$(this).closest('li a').removeClass('active');checkElement.slideUp('normal');}
+if((checkElement.is('ul'))&&(!checkElement.is(':visible'))){$('.right-sub-link ul:visible').slideUp('normal');checkElement.slideDown('normal');}
+if($(this).closest('li').find('ul').children().length==0){return true;}else{return false;}});});})(jQuery);

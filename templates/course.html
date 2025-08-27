@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Anne's First Grade College</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <i class="fa-solid fa-location-dot"></i> Miller Road, Bangalore - 560052
+            </div>
+            <div class="top-right">
+                <a href="{{ url_for('login') }}"><i class="fa-solid fa-user"></i> Login</a>
+                <a href="{{ url_for('contact') }}"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logo.jpg') }}" alt="College Logo">
+                <div class="college-info">
+                    <h1>St. Anne's First Grade College For Women</h1>
+                    <p class="accreditation">NAAC Accredited | AICTE Approved | Affiliated to Bengaluru City University</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="{{ url_for('index') }}"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li class="dropdown">
+                    <a href="#">About <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('history') }}"><i class="fa-solid fa-book-open"></i> History</a></li>
+                        <li><a href="{{ url_for('mission') }}"><i class="fa-solid fa-bullseye"></i> Mission</a></li>
+                        <li><a href="{{ url_for('vission') }}"><i class="fa-solid fa-eye"></i> Vision</a></li>
+                        <li><a href="{{ url_for('pricipal') }}"><i class="fa-solid fa-user-tie"></i> Principal Desk</a></li>
+                        <li><a href="{{ url_for('place') }}"><i class="fa-solid fa-briefcase"></i> Placement</a></li>
+                        <li><a href="{{ url_for('achiev') }}"><i class="fa-solid fa-trophy"></i> Achievements</a></li>
+                        <li><a href="{{ url_for('mana') }}"><i class="fa-solid fa-users-gear"></i> Management</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#">Courses <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                                    <li><a href="{{ url_for('bca') }}"><i class="fa-solid fa-laptop-code"></i> BCA</a></li>
+                                    <li><a href="{{ url_for('bba') }}"><i class="fa-solid fa-chart-line"></i> BBA</a></li>
+                                    <li><a href="{{ url_for('bcom') }}"><i class="fa-solid fa-file-invoice-dollar"></i> B.Com</a></li>
+                                    <li><a href="{{ url_for('bsc') }}"><i class="fa-solid fa-microscope"></i> BSC</a></li>
+                                    <li><a href="{{ url_for('ba') }}"><i class="fa-solid fa-book-open"></i> BA</a></li>
+                                    <li><a href="{{ url_for('recommend_form') }}"><i class="fa-solid fa-magic"></i> Recommend a Course</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Faculty <i class="fa-solid fa-angle-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ url_for('departments') }}"><i class="fa-solid fa-building-columns"></i> Departments</a></li>
+                        <li><a href="{{ url_for('staff') }}"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
+                    </ul>
+                </li>
+
+                    <li class="dropdown">
+                    <a href="{{ url_for('view_events_user') }}">Upcoming Events<i class="fa-solid fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('seminars') }}"><i class="fa-solid fa-chalkboard-teacher"></i> Seminars</a></li>
+                    <li><a href="{{ url_for('workshops') }}"><i class="fa-solid fa-tools"></i> Workshops</a></li>
+                    <li><a href="{{ url_for('cultural') }}"><i class="fa-solid fa-masks-theater"></i> Cultural Events</a></li>
+                    <li><a href="{{ url_for('sports') }}"><i class="fa-solid fa-volleyball-ball"></i> Sports</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Reviews <i class="fa-solid fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('review') }}"><i class="fa-solid fa-user-graduate"></i> Student Reviews</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Contact <i class="fa-solid fa-angle-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('submit_contact') }}"><i class="fa-solid fa-envelope"></i> Contact Form</a></li>
+                    <li><a href="{{ url_for('campus_location') }}"><i class="fa-solid fa-map-marker-alt"></i> Campus Location</a></li>
+                    <li><a href="{{ url_for('faq') }}"><i class="fa-solid fa-question-circle"></i> FAQs</a></li>
+                </ul>
+            </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    
+    <section id="courses">
+        <h1>Our Courses</h1>
+        <h2>Undergraduate Courses</h2>
+        <div class="course-container">
+            <div class="course-card">
+                <h3>Bachelor of Computer Applications (BCA)</h3>
+                <p>A three-year undergraduate degree focusing on computer science, programming, and IT applications.</p>
+            </div>
+        
+            <div class="course-card">
+                <h3>Bachelor of Science (B.Sc)</h3>
+                <p>Offers specializations in Physics, Chemistry, Mathematics, and Computer Science.</p>
+            </div>
+        
+            <div class="course-card">
+                <h3>Bachelor of Business Administration (BBA)</h3>
+                <p>Provides knowledge in business management, marketing, finance, and entrepreneurship.</p>
+            </div>
+        
+            <div class="course-card">
+                <h3>Bachelor of Commerce (B.Com)</h3>
+                <p>Focuses on Accounting, Finance, Economics, and Business Law.</p>
+            </div>
+        
+            <div class="course-card">
+                <h3>Bachelor of Arts (BA)</h3>
+                <p>Covers subjects like Literature, Sociology, History, Political Science, and Psychology.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pg-courses">
+        <h2>Postgraduate Courses</h2>
+        <div class="course-container">
+            
+            <div class="course-card">
+                <h3>Master of Commerce (M.Com)</h3>
+                <p>Focuses on higher-level studies in Finance, Accounting, Taxation, and Business Analytics.</p>
+            </div>
+        
+        </div>
+    </section>
+
+    
+</body>
+</html>

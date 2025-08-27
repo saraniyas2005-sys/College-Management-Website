@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Event</title>
+</head>
+<style>
+
+    body {
+        background: linear-gradient(to right, #e0f7fa, #e3f2fd);
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #003366;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #002244;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+        color: #003366;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        background: #f9f9f9;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #007BFF;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+
+    button[type="submit"] {
+        background: linear-gradient(145deg, #005aaa, #007bff);
+        color: white;
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(0, 91, 187, 0.4);
+    }
+
+    button[type="submit"]:hover {
+        background: #0066cc;
+        box-shadow: 0 6px 20px rgba(0, 91, 187, 0.6);
+    }
+
+    .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        color: #004d99;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+
+    .back-button:hover {
+        color: #002f66;
+    }
+
+    img {
+        margin-top: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    ul {
+        padding: 0;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+
+    li.success {
+        background: #d4edda;
+        color: #155724;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+
+    li.error {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+    }
+</style>
+</style>
+<body>
+    <body>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul>
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<div class="container">
+    <h1>Edit Event</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            <label for="name">Event Title</label>
+            {{ form.name(class="form-control", id="name") }}
+        </div>
+
+        <div class="form-group">
+            <label for="description">Event Description</label>
+            {{ form.description(class="form-control", id="description") }}
+        </div>
+
+        <div class="form-group">
+            <label for="date">Event Date</label>
+            {{ form.date(class="form-control", id="date") }}
+        </div>
+
+        <div class="form-group">
+            <label for="venue">Event Venue</label>
+            {{ form.venue(class="form-control", id="venue") }}
+        </div>
+
+        <div class="form-group">
+            <label for="type">Event Type</label>
+            <select name="type" id="type" class="form-control">
+                <option value="">-- Select Event Type --</option>
+                <option value="Cultural Event" {% if form.type.data == 'Cultural Event' %}selected{% endif %}>Cultural Event</option>
+                <option value="Workshop" {% if form.type.data == 'Workshop' %}selected{% endif %}>Workshop</option>
+                <option value="Seminar" {% if form.type.data == 'Seminar' %}selected{% endif %}>Seminar</option>
+                <option value="Sports" {% if form.type.data == 'Sports' %}selected{% endif %}>Sports</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="poster">Event Poster</label>
+            {{ form.poster(class="form-control", id="poster") }}
+            {% if event.poster %}
+                <p>Current Poster:</p>
+                <img src="{{ url_for('static', filename=event.poster) }}" alt="Event Poster" style="max-width: 200px;">
+            {% endif %}
+        </div>
+
+        <button type="submit">Update Event</button>
+   
+    </form>
+</div>
+</body>
+</body>
+</html>

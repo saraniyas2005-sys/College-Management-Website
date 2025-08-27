@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login | St. Anne's College</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      height: 100vh;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #4b2e2e;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Soft floating hearts background */
+    body::before {
+      content: "❤️";
+      position: absolute;
+      font-size: 80px;
+      color: #f88c8c;
+      top: 10%;
+      left: 10%;
+      opacity: 0.1;
+      animation: floatHeart1 12s ease-in-out infinite;
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::after {
+      content: "💕";
+      position: absolute;
+      font-size: 60px;
+      color: #ffa7a7;
+      top: 70%;
+      left: 75%;
+      opacity: 0.12;
+      animation: floatHeart2 15s ease-in-out infinite;
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes floatHeart1 {
+      0%, 100% { transform: translateY(0) translateX(0);}
+      50% { transform: translateY(-25px) translateX(15px);}
+    }
+    @keyframes floatHeart2 {
+      0%, 100% { transform: translateY(0) translateX(0);}
+      50% { transform: translateY(-30px) translateX(-20px);}
+    }
+
+    .login-container {
+      position: relative;
+      background: #fff1f0;
+      padding: 50px 40px 40px;
+      border-radius: 30px;
+      box-shadow: 0 15px 40px rgba(251, 154, 154, 0.5);
+      width: 100%;
+      max-width: 420px;
+      z-index: 1;
+      border: 2px solid #fda085;
+      transition: box-shadow 0.3s ease;
+    }
+    .login-container:hover {
+      box-shadow: 0 25px 60px rgba(251, 154, 154, 0.7);
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #e65c5c;
+      text-shadow: 1px 1px 6px #fbcaca;
+      letter-spacing: 1.5px;
+    }
+
+    /* Input container for icon + input */
+    .input-group {
+      position: relative;
+      margin-bottom: 30px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 16px 16px 16px 50px;
+      border-radius: 25px;
+      border: 2px solid #f6a5a5;
+      font-size: 1.1rem;
+      color: #a14e4e;
+      background: #fff8f7;
+      box-shadow: inset 2px 2px 5px #f8d4d4,
+        inset -2px -2px 5px #ffdede;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 500;
+    }
+
+    .input-field::placeholder {
+      color: #d99494;
+      font-style: italic;
+    }
+
+    .input-field:focus {
+      outline: none;
+      border-color: #e65c5c;
+      box-shadow: 0 0 10px #f66f6f;
+      background: #fff3f3;
+    }
+
+    .input-field-icon {
+      position: absolute;
+      top: 50%;
+      left: 18px;
+      transform: translateY(-50%);
+      color: #e47b7b;
+      font-size: 20px;
+      pointer-events: none;
+      transition: color 0.3s ease;
+    }
+
+    .input-field:focus + .input-field-icon {
+      color: #e65c5c;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border-radius: 30px;
+      border: none;
+      background: linear-gradient(135deg, #ff6f91, #ff9671);
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 25px #ff6f91aa;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #ff9671, #ff6f91);
+      box-shadow: 0 12px 30px #ff9671cc;
+    }
+
+    .error {
+      color: #d64545;
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: 600;
+      text-shadow: 0 0 4px #d6454599;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .forgot-password a {
+      text-decoration: none;
+      color: #ff8a8a;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .forgot-password a:hover {
+      color: #e65c5c;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 35px 25px 25px;
+        width: 90%;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      button {
+        font-size: 1rem;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <form method="POST" action="{{ url_for('login') }}" autocomplete="off">
+      <h2><i class="fas fa-user-shield"></i> Admin Login</h2>
+
+      {% if error %}
+      <p class="error">{{ error }}</p>
+      {% endif %}
+
+      <div class="input-group">
+        <input
+          type="text"
+          name="username"
+          class="input-field"
+          placeholder="Enter Admin Username"
+          required
+          autocomplete="off"
+        />
+        <i class="fas fa-user input-field-icon"></i>
+      </div>
+
+      <div class="input-group">
+        <input
+          type="password"
+          name="password"
+          class="input-field"
+          placeholder="Enter Password"
+          required
+          autocomplete="new-password"
+        />
+        <i class="fas fa-lock input-field-icon"></i>
+      </div>
+
+      <input type="hidden" name="next" value="{{ next }}" />
+
+      <button type="submit">Login</button>
+
+      
+      </div>
+    </form>
+  </div>
+</body>
+</html>

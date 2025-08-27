@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachelor of Business Administration (BBA)</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome (CDN - Do NOT use url_for) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+  <link href="{{ url_for('static', filename='css/bca.css') }}" rel="stylesheet"/>
+<head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <i class="fa-solid fa-location-dot"></i> Miller Road, Bangalore - 560052
+            </div>
+            <div class="top-right">
+                <a href="{{ url_for('login') }}"><i class="fa-solid fa-user"></i> Login</a>
+                <a href="{{ url_for('contact') }}"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="College Logo">
+                <div class="college-info">
+                    <h1>St. Anne's First Grade College For Women</h1>
+                    <p class="accreditation">NAAC Accredited | AICTE Approved | Affiliated to Bengaluru City University</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar">
+  <div class="container">
+    <ul>
+      <li><a href="{{ url_for('index') }}"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li class="dropdown">
+        <a href="#">About <i class="fa-solid fa-angle-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('history') }}"><i class="fa-solid fa-book-open"></i> History</a></li>
+          <li><a href="{{ url_for('mission') }}"><i class="fa-solid fa-bullseye"></i> Mission</a></li>
+          <li><a href="{{ url_for('vission') }}"><i class="fa-solid fa-eye"></i> Vision</a></li>
+          <li><a href="{{ url_for('pricipal') }}"><i class="fa-solid fa-user-tie"></i> Principal Desk</a></li>
+          <li><a href="{{ url_for('place') }}"><i class="fa-solid fa-briefcase"></i> Placement</a></li>
+          <li><a href="{{ url_for('achiev') }}"><i class="fa-solid fa-trophy"></i> Achievements</a></li>
+          <li><a href="{{ url_for('mana') }}"><i class="fa-solid fa-users-gear"></i> Management</a></li>
+        </ul>
+      </li>
+
+
+        <li class="dropdown">
+          <a href="#">Courses <i class="fa-solid fa-angle-down"></i></a>
+            <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('bca') }}"><i class="fa-solid fa-laptop-code"></i> BCA</a></li>
+                    <li><a href="{{ url_for('bba') }}"><i class="fa-solid fa-chart-line"></i> BBA</a></li>
+                    <li><a href="{{ url_for('bcom') }}"><i class="fa-solid fa-file-invoice-dollar"></i> B.Com</a></li>
+                    <li><a href="{{ url_for('bsc') }}"><i class="fa-solid fa-microscope"></i> BSC</a></li>
+                    <li><a href="{{ url_for('ba') }}"><i class="fa-solid fa-book-open"></i> BA</a></li>
+                    <li><a href="{{ url_for('recommend_form') }}"><i class="fa-solid fa-magic"></i> Recommend a Course</a></li>
+            </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#">Faculty <i class="fa-solid fa-angle-down"></i></a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('departments') }}"><i class="fa-solid fa-building-columns"></i> Departments</a></li>
+            <li><a href="{{ url_for('staff') }}"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
+        </ul>
+    </li>
+
+      <li class="dropdown">
+          <a href="{{ url_for('view_events_user') }}">Upcoming Events<i class="fa-solid fa-angle-down"></i></a>
+      <ul class="dropdown-menu">
+          <li><a href="{{ url_for('seminars') }}"><i class="fa-solid fa-chalkboard-teacher"></i> Seminars</a></li>
+          <li><a href="{{ url_for('workshops') }}"><i class="fa-solid fa-tools"></i> Workshops</a></li>
+          <li><a href="{{ url_for('cultural') }}"><i class="fa-solid fa-masks-theater"></i> Cultural Events</a></li>
+          <li><a href="{{ url_for('sports') }}"><i class="fa-solid fa-volleyball-ball"></i> Sports</a></li>
+      </ul>
+  </li>
+
+  <li class="dropdown">
+      <a href="#">Reviews <i class="fa-solid fa-angle-down"></i></a>
+      <ul class="dropdown-menu">
+          <li><a href="{{ url_for('review') }}"><i class="fa-solid fa-user-graduate"></i> Student Reviews</a></li>
+      </ul>
+  </li>
+
+  <li class="dropdown">
+      <a href="#">Contact <i class="fa-solid fa-angle-down"></i></a>
+      <ul class="dropdown-menu">
+          <li><a href="{{ url_for('submit_contact') }}"><i class="fa-solid fa-envelope"></i> Contact Form</a></li>
+          <li><a href="{{ url_for('campus_location') }}"><i class="fa-solid fa-map-marker-alt"></i> Campus Location</a></li>
+          <li><a href="{{ url_for('faq') }}"><i class="fa-solid fa-question-circle"></i> FAQs</a></li>
+      </ul>
+  </li>
+</ul>
+</div>
+</nav>
+<br>
+    <div class="contain">
+        <h1>Bachelor of Business Administration (BBA)</h1>
+        <p>Select a year to view its semesters:</p>
+        <br>
+        <!-- Year 1 -->
+        <div class="course-box" onclick="toggleSemester('year1')">
+          <h2><i class="fa-solid fa-calendar"></i> First Year</h2>
+        </div>
+        <div id="year1" class="semester-list" style="display: none;">
+          <div class="semester-list-wrapper">
+
+            <div class="semester-list">
+              <a href="javascript:void(0)" onclick="toggleSubjects('sem1-subjects')">
+                <i class="fa-solid fa-book"></i> Semester 1
+              </a>
+              <div id="sem1-subjects" class="subject-box" style="display: none;">
+                <ul>
+                  <li>❖ Principles of Management</li>
+                  <li>❖ Financial Accounting</li>
+                  <li>❖ Business Communication</li>
+                  <li>❖ Economics</li>
+                  <li>❖ Business Mathematics</li>
+                </ul>
+                <a href="{{ url_for('static', filename='downloads/bba-sem1-syallbus.pdf') }}"class="download-btn" download>
+                  <i class="fa-solid fa-download"></i> Download Syllabus (PDF)
+                </a>
+              </div>
+            </div>
+
+            <div class="semester-list">
+              <a href="javascript:void(0)" onclick="toggleSubjects('sem2-subjects')">
+                <i class="fa-solid fa-book"></i> Semester 2
+              </a>
+              <div id="sem2-subjects" class="subject-box" style="display: none;">
+                <ul>
+                  <li>❖ Cost Accounting</li>
+                  <li>❖ Business Law</li>
+                  <li>❖ Marketing Management</li>
+                  <li>❖ Organizational Behavior</li>
+                  <li>❖ Environmental Studies</li>
+                </ul>
+                <a href="{{ url_for('static', filename='downloads/bba-sem2-syallbus.pdf') }}"class="download-btn" download>
+                  <i class="fa-solid fa-download"></i> Download Syllabus (PDF)
+                </a>
+              </div>
+            </div>
+
+            <div class="fee-structure">
+              <h4><i class="fa-solid fa-money-bill-wave"></i> Fee Structure for First Year</h4>
+              <ul>
+  <li><strong>📘 1st Year Total Fee:</strong> ₹45,000</li>
+  <li><span>• 1st Installment:</span> ₹23,000</li>
+  <li><span>• 2nd Installment:</span> ₹22,000</li>
+  <li><span>• Included in 1st Year:</span> Exam Fee (₹2,500), Library Fee, Registration, Industrial Visit Fund</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="course-box" onclick="toggleSemester('year2')">
+          <h2><i class="fa-solid fa-calendar"></i> Second Year</h2>
+        </div>
+        <div id="year2" class="semester-list" style="display: none;">
+          <div class="semester-list-wrapper">
+
+            <div class="semester-list">
+              <a href="javascript:void(0)" onclick="toggleSubjects('sem3-subjects')">
+                <i class="fa-solid fa-book"></i> Semester 3
+              </a>
+              <div id="sem3-subjects" class="subject-box" style="display: none;">
+                <ul>
+                  <li>❖ Financial Management</li>
+                  <li>❖ Organizational Development</li>
+                  <li>❖ Marketing Research</li>
+                  <li>❖ Human Resource Management</li>
+                  <li>❖ Business Ethics</li>
+                </ul>
+                <a href="{{ url_for('static', filename='downloads/bba-sem3-syallbus.pdf') }}"class="download-btn" download>
+                  <i class="fa-solid fa-download"></i> Download Syllabus (PDF)
+                </a>
+              </div>
+            </div>
+
+            <div class="semester-list">
+              <a href="javascript:void(0)" onclick="toggleSubjects('sem4-subjects')">
+                <i class="fa-solid fa-book"></i> Semester 4
+              </a>
+              <div id="sem4-subjects" class="subject-box" style="display: none;">
+                <ul>
+                  <li>❖ Business Law</li>
+                  <li>❖ Entrepreneurship Development</li>
+                  <li>❖ International Business</li>
+                  <li>❖ Public Relations</li>
+                  <li>❖ Consumer Behavior</li>
+                </ul>
+                <a href="{{ url_for('static', filename='downloads/bba-sem4-syallbus.pdf') }}"class="download-btn" download>
+                  <i class="fa-solid fa-download"></i> Download Syllabus (PDF)
+                </a>
+              </div>
+            </div>
+
+            <div class="fee-structure">
+              <h4><i class="fa-solid fa-money-bill-wave"></i> Fee Structure for Second Year</h4>
+              <ul>
+ <li><strong>📘 2nd Year Total Fee:</strong> ₹45,000</li>
+  <li><span>• 1st Installment:</span> ₹23,000</li>
+  <li><span>• 2nd Installment:</span> ₹22,000</li>
+  <li><span>• Includes:</span> Exam Fee, Seminar/Workshop Charges, Library, Digital Resource</li>
+  <br>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="course-box" onclick="toggleSemester('year3')">
+          <h2><i class="fa-solid fa-calendar"></i> Third Year</h2>
+        </div>
+        <div id="year3" class="semester-list" style="display: none;">
+          <div class="semester-list-wrapper">
+
+            <div class="semester-list">
+              <a href="javascript:void(0)" onclick="toggleSubjects('sem5-subjects')">
+                <i class="fa-solid fa-book"></i> Semester 5
+              </a>
+              <div id="sem5-subjects" class="subject-box" style="display: none;">
+                <ul>
+                  <li>❖ Strategic Management</li>
+                  <li>❖ Financial Planning</li>
+                  <li>❖ International Marketing</li>
+                  <li>❖ E-commerce Management</li>
+                  <li>❖ Taxation</li>
+                </ul>
+                <a href="{{ url_for('static', filename='downloads/bba-sem5-syallbus.pdf') }}"" class="download-btn" download>
+                  <i class="fa-solid fa-download"></i> Download Syllabus (PDF)
+                </a>
+              </div>
+            </div>
+
+            <div class="semester-list">
+              <a href="javascript:void(0)" onclick="toggleSubjects('sem6-subjects')">
+                <i class="fa-solid fa-book"></i> Semester 6
+              </a>
+              <div id="sem6-subjects" class="subject-box" style="display: none;">
+                <ul>
+                  <li>❖ Management Information Systems</li>
+                  <li>❖ Business Research Methods</li>
+                  <li>❖ Investment Management</li>
+                  <li>❖ Marketing Strategy</li>
+                  <li>❖ Project Work</li>
+                </ul>
+                <a href="{{ url_for('static', filename='downloads/bba-sem6-syallbus.pdf') }}" class="download-btn" download>
+                  <i class="fa-solid fa-download"></i> Download Syllabus (PDF)
+                </a>
+              </div>
+            </div>
+
+            <div class="fee-structure">
+              <h4><i class="fa-solid fa-money-bill-wave"></i> Fee Structure for Third Year</h4>
+              <ul>
+                 <li><strong>📘 3rd Year Total Fee:</strong> ₹45,000</li>
+  <li><span>• 1st Installment:</span> ₹23,000</li>
+  <li><span>• 2nd Installment:</span> ₹22,000</li>
+  <li><span>• Includes:</span> Final Exam Fee, Project Evaluation, Library</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bca.js') }}"></script>
+
+<!--footer of college management website-->
+<footer class="custom-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h3><i class="fas fa-university"></i> St. Anne’s FGC</h3>
+      <p>Miller Road, Vasanth Nagar<br>Bangalore – 560052, India</p>
+      <p><a href="mailto:contact@stannesfgc.edu.in">contact@stannesfgc.edu.in</a></p>
+      <p><a href="tel:+911234567890">+91 123 456 7890</a></p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="{{ url_for('history') }}">About</a></li>
+        <li><a href="{{ url_for('submit_contact') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('admissio') }}">Admissions</a></li>
+        <li><a href="{{ url_for('view_all_events') }}">Events</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{{ url_for('faq') }}">FAQs</a></li>
+        <li><a href="{{ url_for('vission') }}">Vission</a></li>
+        <li><a href="{{ url_for('mission') }}">Mission</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/st.annesfgcmillerroad?utm_source=ig_web_button_share_sheet&igsh=MWJtemJyMWc4Zm8xdA==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@stannesfgcmillerroad" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <a class="map-btn" href="{{ url_for('campus_location') }}">📍 View Location</a>
+    </div>
+  </div>
+<h4 style="margin-top: 25px;">Stay Updated</h4>
+<p>Subscribe to our newsletter for the latest updates!</p>
+
+<form id="newsletter-form">
+  <input type="email" name="email" placeholder="Enter your email" id="newsletter-email" required>
+  <button type="submit">Subscribe</button>
+</form>
+
+<!-- Success message -->
+<p id="success-msg" style="color: #00ffcc; display: none; margin-top: 10px;">
+  ✅ You’ve successfully subscribed to our newsletter!
+</p>
+  <!-- Accreditation Logos -->
+  <div class="footer-accreditation">
+    <img src="{{ url_for('static', filename='images/nacc.jpg') }}" alt="NAAC Accredited">
+    <img src="{{ url_for('static', filename='images/aff.jpg') }}" alt="Affiliated University">
+  </div>
+
+  <!-- Bottom Legal -->
+  <div class="footer-bottom">
+    <ul>
+      <li><a href="{{ url_for('static', filename='privacy-policy.html') }}">Privacy Policy</a></li>
+      <li><a href="{{ url_for('static', filename='terms-conditions.html') }}">Terms & Conditions</a></li>
+    </ul>
+    <p>© 2025 St. Anne’s First Grade College for Women. All rights reserved.</p>
+  </div>
+</footer>
+<!-- JS -->
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script>
+  
+  document.getElementById('newsletter-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // prevent form submission
+
+    const emailInput = document.getElementById('newsletter-email');
+    const successMsg = document.getElementById('success-msg');
+
+    if (emailInput.value.trim() !== "") {
+      successMsg.style.display = 'block';
+      emailInput.value = ''; // clear the input
+
+      // Optional: auto-hide message after 4 seconds
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 4000);
+    }
+  });
+</script>
+</body>
+</html>

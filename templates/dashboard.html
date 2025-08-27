@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #121212, #1f1f1f);
+  color: #e0e0e0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sidebar {
+  width: 260px;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.8);
+  transition: background 0.3s ease;
+  animation: fadeInSidebar 0.6s ease forwards;
+}
+
+@keyframes fadeInSidebar {
+  from {opacity: 0; transform: translateX(-20px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+.sidebar:hover {
+  background: rgba(40, 40, 40, 0.95);
+}
+
+.sidebar h2 {
+  color: #5ab1f8;
+  font-size: 1.75rem;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 8px #5ab1f8;
+}
+
+.sidebar a {
+  color: #cfd8dc;
+  text-decoration: none;
+  padding: 14px 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: background 0.4s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  animation: linkFadeIn 0.6s ease forwards;
+}
+
+.sidebar a:hover {
+  background: rgba(90, 177, 248, 0.25);
+  transform: translateX(6px);
+  color: #5ab1f8;
+  box-shadow: 0 6px 15px rgba(90, 177, 248, 0.6);
+}
+
+@keyframes linkFadeIn {
+  from {opacity: 0; transform: translateX(-10px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  background: rgba(20, 20, 20, 0.6);
+  padding-bottom: 12px;
+  animation: fadeInMain 0.7s ease forwards;
+}
+
+@keyframes fadeInMain {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 48px;
+  background: rgba(35, 35, 35, 0.85);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(90, 177, 248, 0.3);
+  animation: slideDown 0.6s ease forwards;
+}
+
+@keyframes slideDown {
+  from {opacity: 0; transform: translateY(-15px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.header .title h1 {
+  font-size: 2.2rem;
+  color: #5ab1f8;
+  font-weight: 700;
+  text-shadow: 0 0 8px #5ab1f8;
+}
+
+.header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #cfd8dc;
+}
+
+.header .username {
+  font-weight: 600;
+  color: #b0bec5;
+  user-select: none;
+}
+
+.header img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #5ab1f8;
+  object-fit: cover;
+  box-shadow: 0 0 10px #5ab1f8;
+  transition: transform 0.3s ease;
+}
+
+.header img:hover {
+  transform: scale(1.1);
+}
+
+/* DASHBOARD CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+  padding: 36px;
+  background: transparent;
+  flex-grow: 1;
+}
+
+.card {
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 6px 25px rgb(251, 253, 255);
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  cursor: default;
+  user-select: none;
+  color: #cfd8dc;
+  animation: cardFadeIn 0.7s ease forwards;
+}
+
+.card:hover {
+  box-shadow: 0 14px 45px rgba(90, 177, 248, 0.65);
+  transform: translateY(-7px);
+  background: rgb(137, 139, 139);
+}
+
+@keyframes cardFadeIn {
+  from {opacity: 0; transform: translateY(15px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.card .icon {
+  font-size: 2.8rem;
+  padding: 16px;
+  border-radius: 50%;
+  background: #5ab1f8;
+  color: white;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(90, 177, 248, 0.8);
+  transition: background 0.3s ease;
+}
+
+.card:hover .icon {
+  background: #3a8edc;
+  box-shadow: 0 10px 30px rgba(58, 142, 220, 0.9);
+}
+
+.card .details {
+  flex-grow: 1;
+}
+
+.card .details .number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #a0cfff;
+  margin-bottom: 6px;
+  text-shadow: 0 0 6px rgba(160, 207, 255, 0.7);
+}
+
+.card .details .label {
+  font-weight: 600;
+  color: #81b3e6;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+ .card .icon {
+      font-size: 2.5rem;
+      padding: 15px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .card .details {
+      flex-grow: 1;
+    }
+
+    .card .details .number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 5px;
+    }
+
+    .card .details .label {
+      font-weight: 600;
+      color: #2563eb;
+      letter-spacing: 0.03em;
+    }
+
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 18px 10px;
+  font-size: 0.9rem;
+  color: #7892b0;
+  background: #1f1f1f;
+  border-top: 1px solid rgba(90, 177, 248, 0.25);
+  user-select: none;
+  letter-spacing: 0.03em;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 720px) {
+  .sidebar {
+    width: 70px;
+    padding: 10px 0;
+  }
+
+  .sidebar h2 {
+    font-size: 1.4rem;
+    padding-bottom: 16px;
+  }
+
+  .sidebar a {
+    justify-content: center;
+    padding: 14px 0;
+    font-size: 0.95rem;
+  }
+
+  .sidebar a span {
+    display: none;
+  }
+
+  .cards {
+    padding: 24px 15px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 22px;
+  }
+
+  .card .details .number {
+    font-size: 1.7rem;
+  }
+}
+
+
+
+
+    
+
+</style>
+
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="{{ url_for('add_event') }}"><i class="fas fa-calendar-plus"></i> Add Event</a>
+    <a href="{{ url_for('view_all_events') }}"><i class="fas fa-calendar"></i> View Events</a>
+    <a href="{{ url_for('add_announcement') }}"><i class="fas fa-bullhorn"></i> Add Announcement</a>
+    <a href="{{ url_for('view_announcements') }}"><i class="fas fa-eye"></i> View Announcements</a>
+    <a href="{{ url_for('admin_contact_messages') }}"><i class="fas fa-envelope"></i> Admin Contact</a>
+    <a href="{{ url_for('admin_reviews') }}"><i class="fas fa-envelope"></i> Review</a>
+
+    <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> Back</a>
+  </aside>
+
+  <main class="main-content">
+    <header class="header">
+      <div class="title">
+        <h1>Welcome, Admin</h1>
+      </div>
+      <div class="user-info">
+        <span class="username">Lumi</span>
+        <img src="https://i.pravatar.cc/38" alt="User Avatar" />
+      </div>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+        <div class="details">
+          <div class="number">{{ event_count }}</div>
+          <div class="label">Upcoming Events</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon" style="background:#f59e0b"><i class="fas fa-bullhorn"></i></div>
+        <div class="details">
+          <div class="number">{{ announcement_count }}</div>
+          <div class="label">Announcements</div>
+        </div>
+      </div>
+     <div class="card">
+  <div class="icon" style="background:#3b82f6"><!-- Blue background -->
+    <i class="fas fa-envelope"></i> <!-- Envelope icon for contacts -->
+  </div>
+  <div class="details">
+    <div class="number">{{ contact_message_count }}</div>
+    <div class="label">Contact Messages</div>
+  </div>
+</div>
+<div class="card">
+  <div class="icon" style="background:#10b981"><i class="fas fa-star"></i></div>
+  <div class="details">
+    <div class="number">{{ review_count }}</div>
+    <div class="label">Reviews</div>
+  </div>
+</div>
+
+</section>
+<footer class="footer">
+      © 2025 St. Anne's College - Admin Dashboard
+    </footer>
+  </main>
+</body>
+</html>

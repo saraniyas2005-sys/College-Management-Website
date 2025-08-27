@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Your Local CSS (Use Flask's url_for here) -->
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+  <title>All Reviews</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      color: #f1f1f1;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffd700;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    .reviews-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 25px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .name {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .role {
+      background-color: #ffd700;
+      color: #000;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .rating {
+      font-size: 1.1rem;
+      color: #ffdd57;
+      margin: 10px 0;
+    }
+
+    .message {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #eaeaea;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="container">
+    <div class="top-left">
+    <i class="fa-solid fa-location-dot"></i> Miller Road, Bangalore - 560052
+                </div>
+    <div class="top-right">
+    <a href="{{ url_for('login') }}"><i class="fa-solid fa-user"></i> Login</a>
+    <a href="{{ url_for('contact') }}"><i class="fa-solid fa-envelope"></i> Contact</a>
+    </div>
+    </div>
+    </div>
+    <!-- 🔹 HEADER (Logo & College Info Only) -->
+    <header class="header">
+    <div class="container header-content">
+    <div class="logo">
+    <img alt="College Logo" src="{{ url_for('static', filename='images/logo.jpg') }}"/>
+    <div class="college-info">
+    <h1>St. Anne's First Grade College For Women</h1>
+    <p class="accreditation">NAAC Accredited | AICTE Approved | Affiliated to Bengaluru City University</p>
+    </div>
+    </div>
+    </div>
+    </header>
+    <!-- 🔹 NAVIGATION BAR (Separate from Header) -->
+    <nav class="navbar">
+    <div class="container">
+    <ul>
+    <li><a href="{{ url_for('index') }}"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li class="dropdown">
+        
+    <a href="#">About <i class="fa-solid fa-angle-down"></i></a>
+    <ul class="dropdown-menu">
+    <li><a href="{{ url_for('history') }}"><i class="fa-solid fa-book-open"></i> History</a></li>
+    <li><a href="{{ url_for('mission') }}"><i class="fa-solid fa-bullseye"></i> Mission</a></li>
+    <li><a href="{{ url_for('vission') }}"><i class="fa-solid fa-eye"></i> Vision</a></li>
+    <li><a href="{{ url_for('pricipal') }}"><i class="fa-solid fa-user-tie"></i> Principal Desk</a></li>
+    <li><a href="{{ url_for('place') }}"><i class="fa-solid fa-briefcase"></i> Placement</a></li>
+    <li><a href="{{ url_for('achiev') }}"><i class="fa-solid fa-trophy"></i> Achievements</a></li>
+    <li><a href="{{ url_for('mana') }}"><i class="fa-solid fa-users-gear"></i> Management</a></li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="#">Courses <i class="fa-solid fa-angle-down"></i></a>
+    <ul class="dropdown-menu">
+    <li><a href="{{ url_for('bca') }}"><i class="fa-solid fa-laptop-code"></i> BCA</a></li>
+    <li><a href="{{ url_for('bba') }}"><i class="fa-solid fa-chart-line"></i> BBA</a></li>
+    <li><a href="{{ url_for('bcom') }}"><i class="fa-solid fa-file-invoice-dollar"></i> B.Com</a></li>
+    <li><a href="{{ url_for('bsc') }}"><i class="fa-solid fa-microscope"></i> BSC</a></li>
+    <li><a href="{{ url_for('ba') }}"><i class="fa-solid fa-book-open"></i> BA</a></li>
+    <li><a href="{{ url_for('recommend_form') }}"><i class="fa-solid fa-magic"></i> Recommend a Course</a></li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="#">Faculty <i class="fa-solid fa-angle-down"></i></a>
+    <ul class="dropdown-menu">
+    <li><a href="{{ url_for('departments') }}"><i class="fa-solid fa-building-columns"></i> Departments</a></li>
+    <li><a href="{{ url_for('staff') }}"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="{{ url_for('view_events_user') }}">Upcoming Events<i class="fa-solid fa-angle-down"></i></a>
+    <ul class="dropdown-menu">
+    <li><a href="{{ url_for('seminars') }}"><i class="fa-solid fa-chalkboard-teacher"></i> Seminars</a></li>
+    <li><a href="{{ url_for('workshops') }}"><i class="fa-solid fa-tools"></i> Workshops</a></li>
+    <li><a href="{{ url_for('cultural') }}"><i class="fa-solid fa-masks-theater"></i> Cultural Events</a></li>
+    <li><a href="{{ url_for('sports') }}"><i class="fa-solid fa-volleyball-ball"></i> Sports</a></li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="#">Reviews <i class="fa-solid fa-angle-down"></i></a>
+    <ul class="dropdown-menu">
+    <li><a href="{{ url_for('review') }}"><i class="fa-solid fa-user-graduate"></i> Student Reviews</a></li>
+    </ul>
+    </li>
+    <li class="dropdown">
+    <a href="#">Contact <i class="fa-solid fa-angle-down"></i></a>
+    <ul class="dropdown-menu">
+    <li><a href="{{ url_for('submit_contact') }}"><i class="fa-solid fa-envelope"></i> Contact Form</a></li>
+    <li><a href="{{ url_for('campus_location') }}"><i class="fa-solid fa-map-marker-alt"></i> Campus Location</a></li>
+    <li><a href="{{ url_for('faq') }}"><i class="fa-solid fa-question-circle"></i> FAQs</a></li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+    </nav>
+  <h1>All Reviews</h1>
+
+  <div class="reviews-container">
+    {% for review in reviews %}
+    <div class="review-card">
+      <div class="review-header">
+        <div class="name">{{ review.name }}</div>
+        <div class="role">{{ review.role }}</div>
+      </div>
+      <div class="rating">⭐ {{ review.rating }} / 5</div>
+      <div class="message">{{ review.message }}</div>
+    </div>
+    {% else %}
+    <p style="text-align:center; font-size: 1.2rem;">No reviews yet.</p>
+    {% endfor %}
+  </div>
+</body>
+</html>

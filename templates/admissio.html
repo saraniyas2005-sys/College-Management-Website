@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions - St. Anne's FGC</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body><style>
+    /* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f9;
+  color: #333;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 30px 0;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+section {
+  margin: 20px 0;
+}
+
+h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+p, ul, ol {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+ol li {
+  margin-left: 20px;
+}
+
+ul li {
+  margin-left: 20px;
+}
+
+a {
+  color: #4CAF50;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #45a049;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+footer p {
+  margin: 10px 0;
+}
+
+footer a {
+  color: #fff;
+}
+
+footer a:hover {
+  color: #4CAF50;
+}
+
+.admission-details, .documents-needed, .admission-fee {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admission-details ol {
+  padding-left: 20px;
+}
+
+.admission-details li {
+  margin-bottom: 10px;
+}
+
+.documents-needed ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.admission-fee a {
+  font-weight: bold;
+}
+
+.back-button {
+  display: inline-block;
+  margin: 15px 0;
+  padding: 8px 16px;
+  font-size: 15px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  border: none;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 0 8px rgba(0, 183, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: linear-gradient(135deg, #023e8a, #0077b6);
+  box-shadow: 0 0 12px rgba(0, 119, 182, 0.8);
+  transform: scale(1.05);
+}
+
+
+footer p strong {
+  font-size: 1.1rem;
+}
+
+/* For small screens */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
+
+</style>
+  <header>
+    <h1>Admissions Open for 2025 at St. Anne's First Grade College</h1>
+  </header>
+
+  <section class="admission-details">
+    <h2>How to Apply</h2>
+    <p>We're excited to have you join the St. Anne's First Grade College community. Follow the steps below to complete your application:</p>
+    <ol>
+      <li><strong>Step 1:</strong> Fill out the online application form.</li>
+      <li><strong>Step 2:</strong> Upload your necessary documents (ID proof, educational certificates, etc.).</li>
+      <li><strong>Step 3:</strong> Pay the application fee online through our secure payment portal.</li>
+      <li><strong>Step 4:</strong> Submit your application and await further instructions for interviews or entrance exams (if applicable).</li>
+    </ol>
+  </section>
+
+  <section class="documents-needed">
+    <h2>Documents Required</h2>
+    <ul>
+      <li>Recent passport-size photograph</li>
+      <li>Copy of your last academic mark sheet</li>
+      <li>Government-issued ID (Aadhar card, passport, etc.)</li>
+      <li>Transfer certificate (if applicable)</li>
+      <li>Caste certificate (for reserved category students)</li>
+    </ul>
+  </section>
+
+  <section class="admission-fee">
+    <h2>Admission Fee</h2>
+    <p>For detailed information about the fee structure, please refer to our <a href="#">Fee Structure Page</a>.</p>
+  </section>
+ <a href="javascript:history.back()" class="back-button">← Back</a>
+
+  <footer>
+    <p>For more information, please <a href="submit_contact">Contact Us</a> or call our admission office at <strong>(+91) 123 456 7890</strong>.</p>
+    <p><a href="{{ url_for('index') }}">Back to Homepage</a></p>
+  </footer>
+
+</body>
+</html>

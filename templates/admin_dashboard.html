@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard | St. Anne's College</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4ff;
+      color: #333;
+    }
+
+    /* LAYOUT */
+    .dashboard {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 250px;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      transition: width 0.3s ease;
+    }
+
+    .sidebar .logo {
+      font-size: 1.7rem;
+      font-weight: 700;
+      text-align: center;
+      padding-bottom: 30px;
+      letter-spacing: 2px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      user-select: none;
+    }
+
+    .sidebar nav {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .sidebar nav a {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 12px 18px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      user-select: none;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      background: #1d4ed8;
+      box-shadow: 0 0 8px #1d4ed8aa;
+    }
+
+    .sidebar nav a i {
+      font-size: 1.2rem;
+      width: 20px;
+      text-align: center;
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      flex-grow: 1;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    /* HEADER */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      border-bottom: 1px solid #e1e7ff;
+      background: #f9fbff;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.05);
+      user-select: none;
+    }
+
+    .header .title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    .header .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .header .user-info .username {
+      font-weight: 600;
+      color: #444;
+    }
+
+    .header .user-info img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #2563eb;
+    }
+
+    /* DASHBOARD CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      padding: 30px;
+      background: #f0f4ff;
+      flex-grow: 1;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 8px 20px rgb(59 130 246 / 0.1);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: box-shadow 0.3s ease;
+      cursor: default;
+      user-select: none;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 30px rgb(59 130 246 / 0.25);
+      transform: translateY(-5px);
+    }
+
+    .card .icon {
+      font-size: 2.5rem;
+      padding: 15px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .card .details {
+      flex-grow: 1;
+    }
+
+    .card .details .number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 5px;
+    }
+
+    .card .details .label {
+      font-weight: 600;
+      color: #2563eb;
+      letter-spacing: 0.03em;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.85rem;
+      color: #888;
+      background: #f9fbff;
+      border-top: 1px solid #e1e7ff;
+      user-select: none;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .sidebar {
+        width: 70px;
+        padding: 10px 0;
+      }
+
+      .sidebar .logo {
+        font-size: 1.3rem;
+        padding-bottom: 15px;
+      }
+
+      .sidebar nav a {
+        justify-content: center;
+        padding: 12px 0;
+      }
+
+      .sidebar nav a span {
+        display: none;
+      }
+
+      .cards {
+        padding: 20px 15px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+      }
+
+      .card .details .number {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">StAnneAdmin</div>
+      <nav>
+        <a href="{{ url_for('admin_dashboard') }}" class="active"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a>
+        <a href="{{ url_for('add_event') }}"><i class="fas fa-calendar-plus"></i> <span>Add Event</span></a>
+        <a href="{{ url_for('view_all_events') }}"><i class="fas fa-calendar-check"></i> <span>View Events</span></a>
+        <a href="{{ url_for('add_announcement') }}"><i class="fas fa-bullhorn"></i> <span>Add Announcement</span></a>
+        <a href="{{ url_for('view_announcements') }}"><i class="fas fa-eye"></i> <span>View Announcements</span></a>
+        <a href="{{ url_for('admin_contact') }}"><i class="fas fa-envelope"></i> Admin Contact</a>
+
+        <a href="javascript:history.back()"><i class="fas fa-arrow-left"></i> <span>Back</span></a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="title">Welcome, Admin</div>
+        <div class="user-info">
+          <span class="username">Lumi</span>
+          <img src="https://i.pravatar.cc/38" alt="User Avatar" />
+        </div>
+      </header>
+
+      <section class="cards">
+        <div class="card">
+          <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+          <div class="details">
+            <div class="number">15</div>
+            <div class="label">Upcoming Events</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon" style="background:#f59e0b"><i class="fas fa-bullhorn"></i></div>
+          <div class="details">
+            <div class="number">8</div>
+            <div class="label">Announcements</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="icon" style="background:#10b981"><i class="fas fa-users"></i></div>
+          <div class="details">
+            <div class="number">230</div>
+            <div class="label">Registered Users</div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <div class="icon" style="background:#ef4444"><i class="fas fa-exclamation-triangle"></i></div>
+          <div class="details">
+            <div class="number">2</div>
+            <div class="label">Pending Issues</div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        © 2025 St. Anne's College - Admin Dashboard
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

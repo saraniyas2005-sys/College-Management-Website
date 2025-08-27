@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+  <title>Admin - All Reviews</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1c1c2b, #2f2f4f);
+      color: #f1f1f1;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffff;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease;
+    }
+
+    .table-container {
+      max-width: 1100px;
+      margin: auto;
+      overflow-x: auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 900px;
+    }
+
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #444;
+    }
+
+    th {
+      background-color: #00ffff;
+      color: #000;
+      font-size: 1rem;
+    }
+
+    td {
+      font-size: 0.95rem;
+      color: #f1f1f1;
+    }
+
+    .no-reviews {
+      text-align: center;
+      padding: 20px;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin Panel: All Reviews</h1>
+
+  <div class="table-container">
+    {% if reviews %}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Rating</th>
+          <th>Message</th>
+          <th>Submitted Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for review in reviews %}
+        <tr>
+          <td>{{ review.name }}</td>
+          <td>{{ review.role }}</td>
+          <td>⭐ {{ review.rating }} / 5</td>
+          <td>{{ review.message }}</td>
+          <td>{{ review.date_submitted.strftime('%b %d, %Y %I:%M %p') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="no-reviews">No reviews available.</div>
+    {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Your Review</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffd700;
+      letter-spacing: 1px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      color: rgb(231, 247, 15);
+      transition: 0.3s;
+    }
+
+    form input:focus, form textarea:focus, form select:focus {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    textarea {
+      resize: vertical;
+      height: 120px;
+    }
+
+    .btn-submit {
+      margin-top: 25px;
+      background-color: #ffd700;
+      color: #000;
+      font-weight: bold;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: #ffcc00;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <h2>Submit Your Review</h2>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <label for="name">Name</label>
+      {{ form.name }}
+
+      <label for="role">Your Role</label>
+      {{ form.role }}
+
+      <label for="rating">Rating (1-5)</label>
+      {{ form.rating }}
+
+      <label for="message">Your Feedback</label>
+      {{ form.message }}
+
+      <button type="submit" class="btn-submit">Submit Review</button>
+    </form>
+  </div>
+</body>
+</html>

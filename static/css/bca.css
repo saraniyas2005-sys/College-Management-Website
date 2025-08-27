@@ -1,0 +1,152 @@
+.contain {
+  text-align: center;
+  background: linear-gradient(135deg, #fdfdff, #ffffff, #ffffff);
+  padding: 40px 20px;
+  border-radius: 20px;
+}
+
+/* Heading styles */
+h2, h4 {
+  color: #0a0558;
+  text-align: center;
+  animation: fadeSlideDown 1s ease forwards;
+  text-shadow: 0 0 8px #00ffe0aa;
+  letter-spacing: 1px;
+}
+
+/* Outer Wrapper */
+.semester-list-wrapper {
+  background: rgba(15, 20, 40, 0.7);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 30px rgba(0, 255, 224, 0.05);
+  margin-bottom: 50px;
+  animation: fadeInScale 0.8s ease-in-out;
+}
+
+/* Semester Links */
+.semester-list a {
+  display: inline-block;
+  font-size: 21px;
+  color: #f1f1f1;
+  margin: 10px 0;
+  text-decoration: none;
+  cursor: pointer;
+  text-shadow: 0 0 6px #9f65ff;
+  transition: all 0.3s ease;
+  animation: fadeInUp 1s ease;
+}
+
+.semester-list a:hover {
+  color: #e100ff;
+  text-shadow: 0 0 12px #e100ffcc;
+  transform: scale(1.08);
+}
+
+/* Subject Box */
+.subject-box {
+  background: rgba(25, 25, 60, 0.85);
+  padding: 25px;
+  border-radius: 18px;
+  margin: 25px auto;
+  border-left: 4px solid #00ffe0;
+  animation: fadeInUp 0.6s ease;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 0 12px rgba(0, 255, 224, 0.08);
+}
+
+.subject-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.subject-box ul li {
+  padding: 12px 0;
+  font-size: 18px;
+  color: #eaeaea;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Download Button */
+.download-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 22px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #00ffe0, #00b4d8);
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px #00ffe088;
+  animation: fadeIn 1s ease;
+}
+
+.download-btn:hover {
+  background: #e100ff;
+  color: #fff;
+  box-shadow: 0 0 20px #e100ffaa;
+  transform: translateY(-2px);
+}
+
+/* Fee Structure */
+.fee-structure {
+  margin-top: 40px;
+  background: rgba(10, 10, 30, 0.9);
+  padding: 30px 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 255, 224, 0.1);
+  animation: fadeInUp 1s ease;
+  text-align: center;
+}
+
+.fee-structure h4 {
+  margin-bottom: 20px;
+  color: #e100ff;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 0 0 8px #e100ff88;
+}
+
+.fee-structure ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 18px;
+  color: #e6e6e6;
+  display: inline-block;
+  text-align: left;
+}
+
+.fee-structure ul li {
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.fee-structure span {
+  font-weight: bold;
+  color: #a3f7ff;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Anne's First Grade College</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet"/>
+</head>
+
+<style>
+    /* Faculty Section Styles */
+.faculty-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    border-radius: 10px;
+}
+
+.faculty-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #102a43;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.faculty-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(16, 42, 67, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faculty-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(16, 42, 67, 0.2);
+}
+
+.faculty-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #d9e2ec;
+}
+
+.faculty-card h3 {
+    font-size: 1.2rem;
+    color: #102a43;
+    margin-bottom: 5px;
+}
+
+.faculty-card p {
+    font-size: 0.95rem;
+    color: #334e68;
+    margin: 2px 0;
+}
+
+</style>
+<body>
+    <body>
+
+    <div class="top-bar">
+<div class="container">
+<div class="top-left">
+<i class="fa-solid fa-location-dot"></i> Miller Road, Bangalore - 560052
+            </div>
+<div class="top-right">
+<a href="{{ url_for('login') }}"><i class="fa-solid fa-user"></i> Login</a>
+<a href="{{ url_for('contact') }}"><i class="fa-solid fa-envelope"></i> Contact</a>
+</div>
+</div>
+</div>
+<!-- 🔹 HEADER (Logo & College Info Only) -->
+<header class="header">
+<div class="container header-content">
+<div class="logo">
+<img alt="College Logo" src="{{ url_for('static', filename='images/logo.jpg') }}"/>
+<div class="college-info">
+<h1>St. Anne's First Grade College For Women</h1>
+<p class="accreditation">NAAC Accredited | AICTE Approved | Affiliated to Bengaluru City University</p>
+</div>
+</div>
+</div>
+</header>
+<!-- 🔹 NAVIGATION BAR (Separate from Header) -->
+<nav class="navbar">
+<div class="container">
+<ul>
+<li><a href="{{ url_for('index') }}"><i class="fa-solid fa-house"></i> Home</a></li>
+<li class="dropdown">
+<a href="#">About <i class="fa-solid fa-angle-down"></i></a>
+<ul class="dropdown-menu">
+<li><a href="{{ url_for('history') }}"><i class="fa-solid fa-book-open"></i> History</a></li>
+<li><a href="{{ url_for('mission') }}"><i class="fa-solid fa-bullseye"></i> Mission</a></li>
+<li><a href="{{ url_for('vission') }}"><i class="fa-solid fa-eye"></i> Vision</a></li>
+<li><a href="{{ url_for('pricipal') }}"><i class="fa-solid fa-user-tie"></i> Principal Desk</a></li>
+<li><a href="{{ url_for('place') }}"><i class="fa-solid fa-briefcase"></i> Placement</a></li>
+<li><a href="{{ url_for('achiev') }}"><i class="fa-solid fa-trophy"></i> Achievements</a></li>
+<li><a href="{{ url_for('mana') }}"><i class="fa-solid fa-users-gear"></i> Management</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#">Courses <i class="fa-solid fa-angle-down"></i></a>
+<ul class="dropdown-menu">
+<li><a href="{{ url_for('bca') }}"><i class="fa-solid fa-laptop-code"></i> BCA</a></li>
+<li><a href="{{ url_for('bba') }}"><i class="fa-solid fa-chart-line"></i> BBA</a></li>
+<li><a href="{{ url_for('bcom') }}"><i class="fa-solid fa-file-invoice-dollar"></i> B.Com</a></li>
+<li><a href="{{ url_for('bsc') }}"><i class="fa-solid fa-microscope"></i> BSC</a></li>
+<li><a href="{{ url_for('ba') }}"><i class="fa-solid fa-book-open"></i> BA</a></li>
+<li><a href="{{ url_for('recommend_form') }}"><i class="fa-solid fa-magic"></i> Recommend a Course</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#">Faculty <i class="fa-solid fa-angle-down"></i></a>
+<ul class="dropdown-menu">
+<li><a href="{{ url_for('departments') }}"><i class="fa-solid fa-building-columns"></i> Departments</a></li>
+<li><a href="{{ url_for('staff') }}"><i class="fa-solid fa-user-tie"></i> Staff</a></li>
+</ul>
+</li>
+<li class="dropdown">
+    <a href="{{ url_for('view_all_events') }}">Events <i class="fa-solid fa-angle-down"></i></a> 
+    <ul class="dropdown-menu">
+      <li><a href="{{ url_for('seminars') }}"><i class="fa-solid fa-chalkboard-teacher"></i> Seminars</a></li>
+      <li><a href="{{ url_for('workshops') }}"><i class="fa-solid fa-tools"></i> Workshops</a></li>
+      <li><a href="{{ url_for('cultural') }}"><i class="fa-solid fa-masks-theater"></i> Cultural Events</a></li>
+      <li><a href="{{ url_for('sports') }}"><i class="fa-solid fa-volleyball-ball"></i> Sports</a></li>
+    </ul>
+  </li>  
+<li class="dropdown">
+<a href="#">Reviews <i class="fa-solid fa-angle-down"></i></a>
+<ul class="dropdown-menu">
+<li><a href="{{ url_for('review') }}"><i class="fa-solid fa-user-graduate"></i> Student Reviews</a></li>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#">Contact <i class="fa-solid fa-angle-down"></i></a>
+<ul class="dropdown-menu">
+<li><a href="{{ url_for('submit_contact') }}"><i class="fa-solid fa-envelope"></i> Contact Form</a></li>
+<li><a href="{{ url_for('campus_location') }}"><i class="fa-solid fa-map-marker-alt"></i> Campus Location</a></li>
+<li><a href="{{ url_for('faq') }}"><i class="fa-solid fa-question-circle"></i> FAQs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+<br>
+<section class="faculty-section">
+    <h2>Meet Our B.Sc. Faculty</h2>
+    <div class="faculty-grid">
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/bcom2.jpg') }}" alt="Dr. Asha R">
+            <h3>Dr. Asha R</h3>
+            <p>M.Sc., Ph.D.</p>
+            <p>Head of Department</p>
+        </div>
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/bsc1.jpg') }}" alt="Mr. Rakesh Kumar">
+            <h3>Mr. Rakesh Kumar</h3>
+            <p>M.Sc.</p>
+            <p>Assistant Professor</p>
+        </div>
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/bsc2.jpg') }}" alt="Ms. Anjali P">
+            <h3>Ms. Anjali P</h3>
+            <p>M.Sc.</p>
+            <p>Assistant Professor</p>
+        </div>
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/bba1.jpg') }}" alt="Mr. Ravi Shankar">
+            <h3>Mr. Ravi Shankar</h3>
+            <p>M.Sc.</p>
+            <p>Assistant Professor</p>
+        </div>
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/bsc6.jpg') }}" alt="Ms. Sunita S">
+            <h3>Ms. Sunita S</h3>
+            <p>M.Sc.</p>
+            <p>Assistant Professor</p>
+        </div>
+        <div class="faculty-card">
+            <img src="{{ url_for('static', filename='images/bca2.jpg') }}" alt="Mr. Vijay K">
+            <h3>Mr. Vijay K</h3>
+            <p>M.Sc.</p>
+            <p>Assistant Professor</p>
+        </div>
+    </div>
+</section>
+
+<!--footer of college management website-->
+<footer class="custom-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h3><i class="fas fa-university"></i> St. Anne’s FGC</h3>
+      <p>Miller Road, Vasanth Nagar<br>Bangalore – 560052, India</p>
+      <p><a href="mailto:contact@stannesfgc.edu.in">contact@stannesfgc.edu.in</a></p>
+      <p><a href="tel:+911234567890">+91 123 456 7890</a></p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="{{ url_for('history') }}">About</a></li>
+        <li><a href="{{ url_for('submit_contact') }}">Contact Us</a></li>
+        <li><a href="{{ url_for('admissio') }}">Admissions</a></li>
+        <li><a href="{{ url_for('view_all_events') }}">Events</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{{ url_for('faq') }}">FAQs</a></li>
+        <li><a href="{{ url_for('vission') }}">Vission</a></li>
+        <li><a href="{{ url_for('mission') }}">Mission</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/st.annesfgcmillerroad?utm_source=ig_web_button_share_sheet&igsh=MWJtemJyMWc4Zm8xdA==" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@stannesfgcmillerroad" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+      <a class="map-btn" href="{{ url_for('campus_location') }}">📍 View Location</a>
+    </div>
+  </div>
+<h4 style="margin-top: 25px;">Stay Updated</h4>
+<p>Subscribe to our newsletter for the latest updates!</p>
+
+<form id="newsletter-form">
+  <input type="email" name="email" placeholder="Enter your email" id="newsletter-email" required>
+  <button type="submit">Subscribe</button>
+</form>
+
+<!-- Success message -->
+<p id="success-msg" style="color: #00ffcc; display: none; margin-top: 10px;">
+  ✅ You’ve successfully subscribed to our newsletter!
+</p>
+  <!-- Accreditation Logos -->
+  <div class="footer-accreditation">
+    <img src="{{ url_for('static', filename='images/nacc.jpg') }}" alt="NAAC Accredited">
+    <img src="{{ url_for('static', filename='images/aff.jpg') }}" alt="Affiliated University">
+  </div>
+
+  <!-- Bottom Legal -->
+  <div class="footer-bottom">
+    <ul>
+      <li><a href="{{ url_for('static', filename='privacy-policy.html') }}">Privacy Policy</a></li>
+      <li><a href="{{ url_for('static', filename='terms-conditions.html') }}">Terms & Conditions</a></li>
+    </ul>
+    <p>© 2025 St. Anne’s First Grade College for Women. All rights reserved.</p>
+  </div>
+</footer>
+<!-- JS -->
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script>
+  
+  document.getElementById('newsletter-form').addEventListener('submit', function (e) {
+    e.preventDefault(); // prevent form submission
+
+    const emailInput = document.getElementById('newsletter-email');
+    const successMsg = document.getElementById('success-msg');
+
+    if (emailInput.value.trim() !== "") {
+      successMsg.style.display = 'block';
+      emailInput.value = ''; // clear the input
+
+      // Optional: auto-hide message after 4 seconds
+      setTimeout(() => {
+        successMsg.style.display = 'none';
+      }, 4000);
+    }
+  });
+</script>
+</body>
+</html>

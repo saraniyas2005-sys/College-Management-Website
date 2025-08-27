@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Your Ideal Course</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #1e293b);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Glowing particles */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png');
+      opacity: 0.07;
+      z-index: 0;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      padding: 40px;
+      width: 420px;
+      box-shadow: 0 0 35px rgba(255, 215, 0, 0.25);
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(40px); }
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 26px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffe600;
+      text-shadow: 0 0 12px rgba(255, 230, 0, 0.7);
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #facc15;
+      background: #0f172a;
+      color: #facc15;
+      font-weight: bold;
+      margin-bottom: 20px;
+      box-shadow: inset 0 0 5px rgba(250, 204, 21, 0.3);
+      transition: 0.3s ease;
+    }
+
+    select:focus {
+      outline: none;
+      border-color: #f59e0b;
+      box-shadow: 0 0 10px rgba(250, 204, 21, 0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(to right, #facc15, #f59e0b);
+      color: #0f172a;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #f59e0b, #facc15);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+      transform: translateY(-2px);
+    }
+
+    select:focus, button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="smartForm" method="POST" action="{{ url_for('recommend') }}">
+    <div class="glass-box">
+      <h1>🎓 Find Your Ideal Course</h1>
+
+      <label for="subject">Choose your subjects:</label>
+      <select name="subject" id="subject" required>
+        <option value="">--Select--</option>
+        <option value="pcmc">PCMC</option>
+        <option value="pcmb">PCMB</option>
+        <option value="cebcs">CEBCS</option>
+        <option value="ceba">CEBA</option>
+        <option value="arts">Arts</option>
+      </select>
+
+      <label for="career">Choose your career goal:</label>
+      <select name="career" id="career" required>
+        <option value="">--Select--</option>
+        <option value="developer">Developer</option>
+        <option value="data">Data Scientist</option>
+        <option value="scientist">Scientist</option>
+        <option value="business">Business</option>
+        <option value="finance">Finance</option>
+        <option value="creative">Creative</option>
+        <option value="government">Government</option>
+      </select>
+
+      <label for="learningStyle">Your learning style:</label>
+      <select name="learningStyle" id="learningStyle" required>
+        <option value="">--Select--</option>
+        <option value="visual">Visual</option>
+        <option value="auditory">Auditory</option>
+        <option value="kinesthetic">Kinesthetic</option>
+      </select>
+
+      <button type="submit">👑 Get My Royal Course</button>
+       <a href="javascript:history.back()" class="back-button">← Back</a>
+      
+    </div>
+  </form>
+
+</body>
+</html>
